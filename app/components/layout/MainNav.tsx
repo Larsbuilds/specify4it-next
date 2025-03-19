@@ -32,10 +32,10 @@ export function MainNav() {
         initial="initial"
       >
         <Link
-          href="/about"
+          href="/#about"
           className={cn(
             "text-sm font-medium transition-colors hover:text-primary",
-            pathname === "/about" ? "text-primary" : "text-muted-foreground"
+            pathname === "/#about" ? "text-primary" : "text-muted-foreground"
           )}
         >
           About
@@ -47,10 +47,10 @@ export function MainNav() {
         initial="initial"
       >
         <Link
-          href="/features"
+          href="/#features"
           className={cn(
             "text-sm font-medium transition-colors hover:text-primary",
-            pathname === "/features" ? "text-primary" : "text-muted-foreground"
+            pathname === "/#features" ? "text-primary" : "text-muted-foreground"
           )}
         >
           Features
@@ -62,10 +62,10 @@ export function MainNav() {
         initial="initial"
       >
         <Link
-          href="/pricing"
+          href="/#pricing"
           className={cn(
             "text-sm font-medium transition-colors hover:text-primary",
-            pathname === "/pricing" ? "text-primary" : "text-muted-foreground"
+            pathname === "/#pricing" ? "text-primary" : "text-muted-foreground"
           )}
         >
           Pricing
@@ -77,10 +77,10 @@ export function MainNav() {
         initial="initial"
       >
         <Link
-          href="/contact"
+          href="/#contact"
           className={cn(
             "text-sm font-medium transition-colors hover:text-primary",
-            pathname === "/contact" ? "text-primary" : "text-muted-foreground"
+            pathname === "/#contact" ? "text-primary" : "text-muted-foreground"
           )}
         >
           Contact
