@@ -21,19 +21,19 @@ const testimonials = [
   {
     name: "Michael Chen",
     role: "CTO, InnovateCorp",
-    content: "The best solution we've found in the market. Highly recommended for any growing business.",
+    content: "The best solution we&apos;ve found in the market. Highly recommended for any growing business.",
     rating: 5,
   },
   {
     name: "Emily Rodriguez",
     role: "Product Manager, GrowthCo",
-    content: "Incredible features and excellent support. It's exactly what we needed to scale our operations.",
+    content: "Incredible features and excellent support. It&apos;s exactly what we needed to scale our operations.",
     rating: 5,
   },
   {
     name: "David Kim",
     role: "Founder, StartupX",
-    content: "The user experience is outstanding. It's intuitive and powerful at the same time.",
+    content: "The user experience is outstanding. It&apos;s intuitive and powerful at the same time.",
     rating: 5,
   },
 ]
@@ -53,7 +53,7 @@ export function TestimonialsSection() {
             What Our Clients Say
           </h2>
           <p className="max-w-[600px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
-            Don't just take our word for it. Here's what our clients have to say about their experience.
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about their experience.
           </p>
         </motion.div>
         <div className="relative px-8 md:px-16">
@@ -84,7 +84,7 @@ export function TestimonialsSection() {
                             ))}
                           </div>
                           <p className="text-gray-600 dark:text-gray-300">
-                            "{testimonial.content}"
+                            &ldquo;{testimonial.content}&rdquo;
                           </p>
                         </div>
                         <div className="mt-6">
