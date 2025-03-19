@@ -8,53 +8,55 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Star } from "lucide-react"
+import { motion } from "framer-motion"
+import { fadeIn } from "@/lib/animations"
 
 const testimonials = [
   {
     name: "Sarah Johnson",
     role: "CEO, TechStart",
-    content:
-      "The team at this company is exceptional. They delivered beyond our expectations and helped us achieve our goals.",
+    content: "This platform has transformed how we manage our business. The efficiency gains are remarkable.",
     rating: 5,
   },
   {
     name: "Michael Chen",
-    role: "Product Manager, InnovateCorp",
-    content:
-      "Working with them has been a game-changer for our business. Their expertise and dedication are unmatched.",
+    role: "CTO, InnovateCorp",
+    content: "The best solution we've found in the market. Highly recommended for any growing business.",
     rating: 5,
   },
   {
     name: "Emily Rodriguez",
-    role: "Marketing Director, GrowthCo",
-    content:
-      "The results we've seen since partnering with them have been incredible. Highly recommended!",
+    role: "Product Manager, GrowthCo",
+    content: "Incredible features and excellent support. It's exactly what we needed to scale our operations.",
     rating: 5,
   },
   {
     name: "David Kim",
-    role: "CTO, FutureTech",
-    content:
-      "Their innovative solutions and professional approach have helped us stay ahead of the competition.",
+    role: "Founder, StartupX",
+    content: "The user experience is outstanding. It's intuitive and powerful at the same time.",
     rating: 5,
   },
 ]
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 bg-muted/50">
+    <section className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] -z-10" />
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-12">
+        <motion.div
+          variants={fadeIn}
+          initial="initial"
+          animate="animate"
+          className="text-center mb-12"
+        >
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
             What Our Clients Say
           </h2>
-          <p className="text-gray-500 md:text-xl dark:text-gray-400 max-w-[600px] mx-auto">
-            Don't just take our word for it. Here's what some of our satisfied clients have to say about
-            working with us.
+          <p className="max-w-[600px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
+            Don't just take our word for it. Here's what our clients have to say about their experience.
           </p>
-        </div>
-        <div className="relative px-8">
+        </motion.div>
+        <div className="relative px-8 md:px-16">
           <Carousel
             opts={{
               align: "start",
@@ -65,27 +67,38 @@ export function TestimonialsSection() {
             <CarouselContent className="-ml-2 md:-ml-4">
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="h-full">
-                    <CardContent className="p-6 flex flex-col h-full">
-                      <div className="flex mb-4">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />
-                        ))}
-                      </div>
-                      <p className="text-gray-500 dark:text-gray-400 mb-4 flex-grow">
-                        {testimonial.content}
-                      </p>
-                      <div>
-                        <p className="font-semibold">{testimonial.name}</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <div className="p-4">
+                    <Card className="h-full">
+                      <CardContent className="flex flex-col justify-between h-full p-6">
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-1">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                              <svg
+                                key={i}
+                                className="w-5 h-5 text-yellow-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                              >
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.363 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                              </svg>
+                            ))}
+                          </div>
+                          <p className="text-gray-600 dark:text-gray-300">
+                            "{testimonial.content}"
+                          </p>
+                        </div>
+                        <div className="mt-6">
+                          <h4 className="font-semibold">{testimonial.name}</h4>
+                          <p className="text-sm text-gray-500">{testimonial.role}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hidden md:flex -left-4" />
+            <CarouselNext className="hidden md:flex -right-4" />
           </Carousel>
         </div>
       </div>
