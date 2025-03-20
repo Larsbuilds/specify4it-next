@@ -1,8 +1,11 @@
-"use client"
-
 import React from 'react'
-import { MainNav } from "@/components/layout/MainNav"
-import { ModeToggle } from "@/components/theme/ModeToggle"
+import { Header } from "@/components/layout/Header"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Modern React Portfolio",
+  description: "A modern portfolio built with Next.js and shadcn/ui",
+}
 
 export default function MarketingLayout({
   children,
@@ -11,14 +14,7 @@ export default function MarketingLayout({
 }) {
   return (
     <div className="relative min-h-screen">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 max-w-screen-2xl items-center">
-          <MainNav />
-          <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-            <ModeToggle />
-          </div>
-        </div>
-      </header>
+      <Header />
       {children}
     </div>
   )
