@@ -24,10 +24,13 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          storageKey="theme-preference"
         >
           <div className="relative min-h-screen bg-background font-sans antialiased">
             <Header />
-            {children}
+            <div id="app-content">
+              {children}
+            </div>
           </div>
         </ThemeProvider>
       </body>

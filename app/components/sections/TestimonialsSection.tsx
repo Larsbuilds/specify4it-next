@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/carousel"
 import { motion } from "framer-motion"
 import { fadeIn } from "@/lib/animations"
+import { useCallback } from "react"
+import type { UseEmblaCarouselType } from "embla-carousel-react"
 
 const testimonials = [
   {
@@ -61,12 +63,52 @@ export function TestimonialsSection() {
             opts={{
               align: "start",
               loop: true,
+              containScroll: "trimSnaps",
+              dragFree: false,
             }}
             className="w-full"
+            setApi={(api: UseEmblaCarouselType[1]) => {
+              if (!api) return;
+
+              // Auto-play functionality
+              let autoplayInterval: NodeJS.Timeout;
+              const startAutoplay = () => {
+                autoplayInterval = setInterval(() => {
+                  if (api.canScrollNext()) {
+                    api.scrollNext();
+                  }
+                }, 5000); // Change slide every 5 seconds
+              };
+              const stopAutoplay = () => {
+                if (autoplayInterval) {
+                  clearInterval(autoplayInterval);
+                }
+              };
+
+              // Start autoplay when the carousel is mounted
+              startAutoplay();
+
+              // Stop autoplay when the user interacts with the carousel
+              api.on("pointerDown", stopAutoplay);
+              api.on("pointerUp", startAutoplay);
+              api.on("settle", startAutoplay);
+
+              // Cleanup on unmount
+              return () => {
+                stopAutoplay();
+                api.off("pointerDown", stopAutoplay);
+                api.off("pointerUp", startAutoplay);
+                api.off("settle", startAutoplay);
+              };
+            }}
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem 
+                  key={index} 
+                  className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
+                  aria-label={`Testimonial ${index + 1} of ${testimonials.length}`}
+                >
                   <div className="p-1">
                     <Card>
                       <CardContent className="flex flex-col justify-between min-h-[250px] p-6">
@@ -97,9 +139,9 @@ export function TestimonialsSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="hidden md:block">
-              <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2" />
-              <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2" />
+            <div className="flex justify-center gap-2 mt-4 md:mt-0 md:absolute md:inset-y-0 md:left-0 md:right-0 md:justify-between md:items-center md:pointer-events-none">
+              <CarouselPrevious className="relative md:absolute md:left-0 md:translate-x-[-3rem] pointer-events-auto" />
+              <CarouselNext className="relative md:absolute md:right-0 md:translate-x-[3rem] pointer-events-auto" />
             </div>
           </Carousel>
         </div>
