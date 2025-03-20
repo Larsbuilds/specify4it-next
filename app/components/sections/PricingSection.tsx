@@ -1,6 +1,7 @@
 "use client"
 
-import * as React from "react"
+import { motion } from "framer-motion"
+import { fadeIn, scaleIn } from "@/lib/animations"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check } from "lucide-react"
@@ -17,11 +18,14 @@ const plans = [
       "Dark mode",
       "Basic analytics",
     ],
+    cta: "Get Started",
+    popular: false,
   },
   {
     name: "Pro",
     description: "For professional developers and small teams",
-    price: "$19/mo",
+    price: "$19",
+    period: "/mo",
     features: [
       "Unlimited projects",
       "Advanced components",
@@ -31,6 +35,7 @@ const plans = [
       "Team collaboration",
       "API access",
     ],
+    cta: "Get Started",
     popular: true,
   },
   {
@@ -46,59 +51,79 @@ const plans = [
       "Advanced security",
       "Training sessions",
     ],
+    cta: "Contact Sales",
+    popular: false,
   },
 ]
 
 export function PricingSection() {
   return (
-    <section className="container py-20">
-      <div className="mx-auto max-w-[980px]">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">
-            Simple, transparent pricing
-            <span className="block text-primary">for everyone</span>
+    <section id="pricing" className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] -z-10" />
+      <div className="container px-4 md:px-6">
+        <motion.div
+          variants={fadeIn}
+          initial="initial"
+          animate="animate"
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+            Simple, transparent pricing for everyone
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="max-w-[600px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
             Choose the perfect plan for your needs
           </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {plans.map((plan) => (
-            <Card
+        </motion.div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {plans.map((plan, index) => (
+            <motion.div
               key={plan.name}
-              className={
-                plan.popular
-                  ? "relative border-primary shadow-lg"
-                  : "border-border"
-              }
+              variants={scaleIn}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: index * 0.1 }}
             >
-              {plan.popular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
-                  Most Popular
-                </span>
-              )}
-              <CardHeader>
-                <CardTitle>{plan.name}</CardTitle>
-                <CardDescription>{plan.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold">{plan.price}</div>
-                <ul className="mt-6 space-y-3">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-primary" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-              <CardFooter>
-                <Button className="w-full" variant={plan.popular ? "default" : "outline"}>
-                  Get Started
-                </Button>
-              </CardFooter>
-            </Card>
+              <Card className={`h-full border-2 transition-colors ${
+                plan.popular 
+                  ? "border-primary shadow-lg scale-105" 
+                  : "hover:border-primary/50"
+              }`}>
+                <CardHeader>
+                  {plan.popular && (
+                    <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
+                      Most Popular
+                    </div>
+                  )}
+                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                  <CardDescription className="text-base">{plan.description}</CardDescription>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold">{plan.price}</span>
+                    {plan.period && (
+                      <span className="text-gray-500 dark:text-gray-400">{plan.period}</span>
+                    )}
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-3">
+                        <Check className="h-5 w-5 text-primary shrink-0" />
+                        <span className="text-base">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                  <Button 
+                    className="w-full" 
+                    variant={plan.popular ? "default" : "outline"}
+                    size="lg"
+                  >
+                    {plan.cta}
+                  </Button>
+                </CardFooter>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>

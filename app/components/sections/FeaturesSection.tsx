@@ -1,106 +1,120 @@
 "use client"
 
-import * as React from "react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { motion } from "framer-motion"
+import { fadeIn, scaleIn } from "@/lib/animations"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { 
+  Code2, 
+  Layout, 
+  Palette, 
+  Zap, 
+  Shield, 
+  GitBranch,
+  Cloud,
+  Smartphone,
+  Moon
+} from "lucide-react"
 
 const features = [
   {
-    id: "design",
-    title: "Design",
-    description: "Beautiful and accessible components",
-    content: [
-      {
-        title: "Modern Design System",
-        description: "Built with modern design principles and accessibility in mind.",
-      },
-      {
-        title: "Responsive Layout",
-        description: "Looks great on any device, from mobile to desktop.",
-      },
-      {
-        title: "Dark Mode",
-        description: "Built-in dark mode support with system preference detection.",
-      },
-    ],
+    title: "Modern Design System",
+    description: "Built with modern design principles and accessibility in mind.",
+    icon: Palette,
+    color: "text-blue-500",
+    bgColor: "bg-blue-500/10",
   },
   {
-    id: "development",
-    title: "Development",
-    description: "Developer-friendly tools and patterns",
-    content: [
-      {
-        title: "TypeScript",
-        description: "Full TypeScript support for type-safe development.",
-      },
-      {
-        title: "Component Library",
-        description: "Extensive collection of pre-built components.",
-      },
-      {
-        title: "Hot Reload",
-        description: "Fast development with instant feedback.",
-      },
-    ],
+    title: "Responsive Layout",
+    description: "Looks great on any device, from mobile to desktop.",
+    icon: Smartphone,
+    color: "text-green-500",
+    bgColor: "bg-green-500/10",
   },
   {
-    id: "deployment",
-    title: "Deployment",
-    description: "Simple and efficient deployment",
-    content: [
-      {
-        title: "Build Optimization",
-        description: "Optimized builds for production deployment.",
-      },
-      {
-        title: "Static Export",
-        description: "Export as static files for easy hosting.",
-      },
-      {
-        title: "CI/CD Ready",
-        description: "Ready for continuous integration and deployment.",
-      },
-    ],
+    title: "Dark Mode",
+    description: "Built-in dark mode support with system preference detection.",
+    icon: Moon,
+    color: "text-purple-500",
+    bgColor: "bg-purple-500/10",
+  },
+  {
+    title: "Performance Optimized",
+    description: "Lightning fast performance with modern optimization techniques.",
+    icon: Zap,
+    color: "text-yellow-500",
+    bgColor: "bg-yellow-500/10",
+  },
+  {
+    title: "Enterprise Security",
+    description: "Enterprise-grade security with best practices implemented.",
+    icon: Shield,
+    color: "text-red-500",
+    bgColor: "bg-red-500/10",
+  },
+  {
+    title: "Version Control",
+    description: "Built-in version control and deployment workflows.",
+    icon: GitBranch,
+    color: "text-orange-500",
+    bgColor: "bg-orange-500/10",
+  },
+  {
+    title: "Cloud Ready",
+    description: "Ready for cloud deployment with scalable architecture.",
+    icon: Cloud,
+    color: "text-indigo-500",
+    bgColor: "bg-indigo-500/10",
+  },
+  {
+    title: "Developer Experience",
+    description: "Excellent developer experience with modern tooling.",
+    icon: Code2,
+    color: "text-pink-500",
+    bgColor: "bg-pink-500/10",
   },
 ]
 
 export function FeaturesSection() {
   return (
-    <section className="container py-20">
-      <div className="mx-auto max-w-[980px]">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">
-            Features that make development
-            <span className="block text-primary">faster & easier</span>
+    <section id="features" className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] -z-10" />
+      <div className="container px-4 md:px-6">
+        <motion.div
+          variants={fadeIn}
+          initial="initial"
+          animate="animate"
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+            Features that make development faster & easier
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="max-w-[600px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
             Everything you need to build modern web applications
           </p>
-        </div>
-
-        <Tabs defaultValue={features[0].id} className="mt-12">
-          <TabsList className="grid w-full grid-cols-3">
-            {features.map((feature) => (
-              <TabsTrigger key={feature.id} value={feature.id}>
-                {feature.title}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          {features.map((feature) => (
-            <TabsContent key={feature.id} value={feature.id}>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {feature.content.map((item, index) => (
-                  <Card key={index}>
-                    <CardHeader>
-                      <CardTitle>{item.title}</CardTitle>
-                      <CardDescription>{item.description}</CardDescription>
-                    </CardHeader>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
+        </motion.div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              variants={scaleIn}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="h-full border-2 hover:border-primary/50 transition-colors">
+                <CardHeader>
+                  <div className={`w-12 h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-4`}>
+                    <feature.icon className={`w-6 h-6 ${feature.color}`} />
+                  </div>
+                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  <CardDescription className="text-base">
+                    {feature.description}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </motion.div>
           ))}
-        </Tabs>
+        </div>
       </div>
     </section>
   )
