@@ -1,12 +1,14 @@
 import { ThemeProvider } from "@/components/theme-provider"
 import { Inter } from "next/font/google"
+import { Header } from "@/components/layout/Header"
 import "./globals.css"
+import { Metadata } from "next"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
-  title: "React Tailwind Next.js App",
-  description: "A modern web application built with React, Tailwind CSS, and Next.js",
+export const metadata: Metadata = {
+  title: "Modern React Portfolio",
+  description: "A modern portfolio built with Next.js and shadcn/ui",
 }
 
 export default function RootLayout({
@@ -24,6 +26,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="relative min-h-screen bg-background font-sans antialiased">
+            <Header />
             {children}
           </div>
         </ThemeProvider>
