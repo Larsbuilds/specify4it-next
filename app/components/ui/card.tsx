@@ -5,34 +5,37 @@ import { motion, HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { cardHover, glowEffect, borderGlow } from "@/lib/animations"
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  HTMLMotionProps<"div">
->(({ className, ...props }, ref) => (
-  <motion.div
-    variants={cardHover}
-    whileHover="hover"
-    initial="initial"
-  >
+interface CardProps extends Omit<HTMLMotionProps<"div">, "ref"> {
+  className?: string;
+}
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, ...props }, ref) => (
     <motion.div
-      variants={glowEffect}
+      variants={cardHover}
       whileHover="hover"
       initial="initial"
     >
       <motion.div
-        variants={borderGlow}
+        variants={glowEffect}
         whileHover="hover"
         initial="initial"
-        ref={ref}
-        className={cn(
-          "rounded-xl border bg-card text-card-foreground shadow transition-all duration-300",
-          className
-        )}
-        {...props}
-      />
+      >
+        <motion.div
+          variants={borderGlow}
+          whileHover="hover"
+          initial="initial"
+          ref={ref}
+          className={cn(
+            "rounded-xl border bg-card text-card-foreground shadow transition-all duration-300",
+            className
+          )}
+          {...props}
+        />
+      </motion.div>
     </motion.div>
-  </motion.div>
-))
+  )
+)
 Card.displayName = "Card"
 
 const CardHeader = React.forwardRef<
