@@ -40,7 +40,7 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section id="testimonials" className="py-24 bg-background relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] -z-10" />
       <div className="container px-4 md:px-6">
         <motion.div
@@ -56,7 +56,7 @@ export function TestimonialsSection() {
             Don&apos;t just take our word for it. Here&apos;s what our clients have to say about their experience.
           </p>
         </motion.div>
-        <div className="relative px-8 md:px-16">
+        <div className="relative mx-auto max-w-7xl">
           <Carousel
             opts={{
               align: "start",
@@ -67,9 +67,9 @@ export function TestimonialsSection() {
             <CarouselContent className="-ml-2 md:-ml-4">
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="p-4">
-                    <Card className="h-full">
-                      <CardContent className="flex flex-col justify-between h-full p-6">
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex flex-col justify-between min-h-[250px] p-6">
                         <div className="space-y-4">
                           <div className="flex items-center gap-1">
                             {[...Array(testimonial.rating)].map((_, i) => (
@@ -97,8 +97,10 @@ export function TestimonialsSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-4" />
-            <CarouselNext className="hidden md:flex -right-4" />
+            <div className="hidden md:block">
+              <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2" />
+              <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2" />
+            </div>
           </Carousel>
         </div>
       </div>

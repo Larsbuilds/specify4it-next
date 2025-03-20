@@ -6,7 +6,7 @@ import { fadeIn, scaleIn, slideIn, glowEffect, gradientShift } from "@/lib/anima
 
 export function HeroSection() {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section id="home" className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] -z-10" />
       <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background/0 -z-10" />
       <div className="container px-4 md:px-6">
