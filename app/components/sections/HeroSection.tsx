@@ -6,27 +6,38 @@ import { useEffect, useState } from "react"
 
 const fadeIn = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.3 } }
+  visible: { opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }
 }
 
 const slideIn = {
-  hidden: { y: 10, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.3 } }
+  hidden: { y: 50, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }
 }
 
 const scaleIn = {
-  hidden: { scale: 0.98, opacity: 0 },
-  visible: { scale: 1, opacity: 1, transition: { duration: 0.3 } }
+  hidden: { scale: 0.6, opacity: 0 },
+  visible: { scale: 1, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }
 }
 
 const glowEffect = {
-  initial: { opacity: 0.5 },
-  hover: { opacity: 1, transition: { duration: 0.3 } }
+  initial: { opacity: 0.3, scale: 0.95 },
+  hover: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
 }
 
 const gradientShift = {
   initial: { backgroundPosition: "0% 0%" },
-  hover: { backgroundPosition: "100% 100%", transition: { duration: 0.3 } }
+  hover: { backgroundPosition: "100% 100%", transition: { duration: 0.5 } }
+}
+
+const buttonHover = {
+  initial: { scale: 1 },
+  hover: { scale: 1.05, transition: { duration: 0.2 } }
+}
+
+const cardAnimation = {
+  hidden: { y: 50, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
+  hover: { y: -5, transition: { duration: 0.2 } }
 }
 
 export function HeroSection() {
@@ -149,77 +160,88 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background/0 -z-10" />
       <div className="container px-4 md:px-6">
         <div className="grid gap-12 lg:grid-cols-2 items-center">
-          <motion.div
+          <motion.div 
+            variants={fadeIn}
             initial="hidden"
             animate="visible"
-            variants={fadeIn}
             className="flex flex-col justify-center space-y-6"
           >
             <div className="space-y-4">
               <motion.div
+                variants={slideIn}
                 initial="hidden"
                 animate="visible"
-                variants={slideIn}
+                transition={{ delay: 0.2 }}
                 className="inline-flex items-center rounded-lg bg-primary/10 px-4 py-1 text-sm font-medium text-primary"
               >
                 Welcome to Our Platform
               </motion.div>
-              <motion.h1
+              <motion.h1 
+                variants={slideIn}
                 initial="hidden"
                 animate="visible"
-                variants={slideIn}
+                transition={{ delay: 0.3 }}
                 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
               >
                 Transform Your Business with Our Solutions
               </motion.h1>
-              <motion.p
+              <motion.p 
+                variants={slideIn}
                 initial="hidden"
                 animate="visible"
-                variants={slideIn}
+                transition={{ delay: 0.4 }}
                 className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400"
               >
                 We provide innovative solutions to help businesses grow and succeed in the digital age.
                 Join thousands of satisfied customers who have transformed their operations.
               </motion.p>
             </div>
-            <motion.div
+            <motion.div 
+              variants={slideIn}
               initial="hidden"
               animate="visible"
-              variants={scaleIn}
+              transition={{ delay: 0.5 }}
               className="flex flex-col gap-4 min-[400px]:flex-row"
             >
-              <Button size="lg" className="text-lg">
-                Get Started
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg">
-                Learn More
-              </Button>
+              <motion.div variants={buttonHover} whileHover="hover">
+                <Button size="lg" className="text-lg">
+                  Get Started
+                </Button>
+              </motion.div>
+              <motion.div variants={buttonHover} whileHover="hover">
+                <Button variant="outline" size="lg" className="text-lg">
+                  Learn More
+                </Button>
+              </motion.div>
             </motion.div>
           </motion.div>
           <motion.div
+            variants={scaleIn}
             initial="hidden"
             animate="visible"
-            variants={scaleIn}
+            transition={{ delay: 0.2 }}
             className="relative"
           >
             <motion.div
               variants={glowEffect}
               whileHover="hover"
               initial="initial"
-              className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/5 rounded-2xl blur-3xl"
+              className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/5 rounded-2xl blur-3xl"
             />
             <motion.div
               variants={gradientShift}
               whileHover="hover"
               initial="initial"
-              className="relative bg-background border rounded-2xl p-8 shadow-lg"
+              className="relative bg-background border rounded-2xl p-8 shadow-lg bg-gradient-to-br from-background via-background/95 to-background/90"
             >
               <div className="grid gap-4">
-                <motion.div
+                <motion.div 
+                  variants={cardAnimation}
                   initial="hidden"
                   animate="visible"
-                  variants={fadeIn}
-                  className="flex items-center gap-4"
+                  whileHover="hover"
+                  transition={{ delay: 0.3 }}
+                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-primary/5 transition-colors"
                 >
                   <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg
@@ -241,11 +263,13 @@ export function HeroSection() {
                     <p className="text-sm text-gray-500">Optimized performance</p>
                   </div>
                 </motion.div>
-                <motion.div
+                <motion.div 
+                  variants={cardAnimation}
                   initial="hidden"
                   animate="visible"
-                  variants={fadeIn}
-                  className="flex items-center gap-4"
+                  whileHover="hover"
+                  transition={{ delay: 0.4 }}
+                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-primary/5 transition-colors"
                 >
                   <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg
@@ -267,11 +291,13 @@ export function HeroSection() {
                     <p className="text-sm text-gray-500">Enterprise-grade security</p>
                   </div>
                 </motion.div>
-                <motion.div
+                <motion.div 
+                  variants={cardAnimation}
                   initial="hidden"
                   animate="visible"
-                  variants={fadeIn}
-                  className="flex items-center gap-4"
+                  whileHover="hover"
+                  transition={{ delay: 0.5 }}
+                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-primary/5 transition-colors"
                 >
                   <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg
