@@ -43,21 +43,26 @@ The project underwent a strategic migration from Vite to Next.js to leverage:
 ## 🚀 Getting Started
 
 1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/react-tailwind.git
-```
+   ```bash
+   git clone https://github.com/Larsbuilds/react-tailwind.git
+   ```
 
 2. Install dependencies:
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-3. Start the development server:
-```bash
-npm run dev
-```
+3. Create a `.env` file in the root directory with the following content:
+   ```
+   NEXT_PUBLIC_APP_URL=http://localhost:3000
+   ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## 📦 Available Scripts
 
@@ -65,6 +70,7 @@ npm run dev
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
+- `npm run clean` - Clean build artifacts
 
 ## 🔍 Project Structure
 
@@ -124,6 +130,38 @@ Our Next.js implementation provides significant performance improvements over tr
    - Efficient caching mechanisms
    - Static page generation
    - ~100-200ms faster subsequent page loads
+
+### Latest Performance Improvements
+
+#### 1. Component Optimization
+- Implemented client-side only rendering for animated components
+- Added proper mounting checks to prevent hydration issues
+- Optimized animation performance with `useReducedMotion` support
+- Separated static and dynamic content for better initial load
+
+#### 2. Build Optimization
+- Enabled Turbopack for faster development builds
+- Configured SWC minification for production builds
+- Optimized CSS with experimental `optimizeCss` feature
+- Implemented proper code splitting and dynamic imports
+
+#### 3. Loading Performance
+- Added custom loading states that match the design
+- Implemented progressive loading for better perceived performance
+- Optimized initial page load with static content
+- Added smooth transitions between loading states
+
+#### 4. Animation Performance
+- Optimized Framer Motion animations for better performance
+- Added proper animation variants for reduced motion
+- Implemented efficient animation transitions
+- Added performance-focused hover effects
+
+#### 5. Development Experience
+- Added error boundary for better error handling
+- Implemented custom loading components
+- Added proper TypeScript configurations
+- Optimized development server configuration
 
 ### Performance Metrics
 - **Time to First Contentful Paint (FCP)**: ~220-550ms
