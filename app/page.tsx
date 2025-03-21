@@ -6,6 +6,7 @@ import { AboutSection } from "@/components/sections/AboutSection"
 import { FeaturesSection } from "@/components/sections/FeaturesSection"
 import { PricingSection } from "@/components/sections/PricingSection"
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection"
+import { AnalyticsDashboard } from "@/components/sections/AnalyticsDashboard"
 import { Footer } from "@/components/layout/Footer"
 
 export default function Home() {
@@ -25,6 +26,9 @@ export default function Home() {
       </ErrorBoundary>
       <ErrorBoundary>
         <TestimonialsSection />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <AnalyticsDashboard />
       </ErrorBoundary>
       <ErrorBoundary>
         <Footer />
