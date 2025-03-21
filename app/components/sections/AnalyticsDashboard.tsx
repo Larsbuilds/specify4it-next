@@ -46,6 +46,9 @@ const analyticsData = {
     { country: "FR", visitors: 150 },
     { country: "JP", visitors: 100 },
   ],
+  overview: {
+    averageSessionDuration: "2m 30s",
+  },
 }
 
 export function AnalyticsDashboard() {
@@ -93,7 +96,8 @@ export function AnalyticsDashboard() {
               <Clock className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{analyticsData.averageSessionDuration}</div>
+              <div className="text-2xl font-bold">{analyticsData.overview.averageSessionDuration}</div>
+              <p className="text-xs text-muted-foreground">Target: &lt; 3 minutes</p>
             </CardContent>
           </Card>
           <Card>
