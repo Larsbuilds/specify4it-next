@@ -49,12 +49,12 @@ export function TestimonialsSection() {
           variants={fadeIn}
           initial="initial"
           animate="animate"
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl mb-3 sm:mb-4">
             What Our Clients Say
           </h2>
-          <p className="max-w-[600px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
+          <p className="max-w-[600px] mx-auto text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400">
             Don&apos;t just take our word for it. Here&apos;s what our clients have to say about their experience.
           </p>
         </motion.div>
@@ -106,18 +106,18 @@ export function TestimonialsSection() {
               {testimonials.map((testimonial, index) => (
                 <CarouselItem 
                   key={index} 
-                  className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
+                  className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
                   aria-label={`Testimonial ${index + 1} of ${testimonials.length}`}
                 >
                   <div className="p-1">
                     <Card>
-                      <CardContent className="flex flex-col justify-between min-h-[250px] p-6">
-                        <div className="space-y-4">
+                      <CardContent className="flex flex-col justify-between min-h-[200px] sm:min-h-[250px] p-4 sm:p-6">
+                        <div className="space-y-3 sm:space-y-4">
                           <div className="flex items-center gap-1">
                             {[...Array(testimonial.rating)].map((_, i) => (
                               <svg
                                 key={i}
-                                className="w-5 h-5 text-yellow-400"
+                                className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                               >
@@ -125,13 +125,13 @@ export function TestimonialsSection() {
                               </svg>
                             ))}
                           </div>
-                          <p className="text-gray-600 dark:text-gray-300">
+                          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
                             &ldquo;{testimonial.content}&rdquo;
                           </p>
                         </div>
-                        <div className="mt-6">
-                          <h4 className="font-semibold">{testimonial.name}</h4>
-                          <p className="text-sm text-gray-500">{testimonial.role}</p>
+                        <div className="mt-4 sm:mt-6">
+                          <h4 className="text-sm sm:text-base font-semibold">{testimonial.name}</h4>
+                          <p className="text-xs sm:text-sm text-gray-500">{testimonial.role}</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -140,8 +140,8 @@ export function TestimonialsSection() {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-2 mt-4 md:mt-0 md:absolute md:inset-y-0 md:left-0 md:right-0 md:justify-between md:items-center md:pointer-events-none">
-              <CarouselPrevious className="relative md:absolute md:left-0 md:translate-x-[-3rem] pointer-events-auto" />
-              <CarouselNext className="relative md:absolute md:right-0 md:translate-x-[3rem] pointer-events-auto" />
+              <CarouselPrevious className="relative md:absolute md:left-0 md:translate-x-[-3rem] pointer-events-auto h-8 w-8 sm:h-10 sm:w-10" />
+              <CarouselNext className="relative md:absolute md:right-0 md:translate-x-[3rem] pointer-events-auto h-8 w-8 sm:h-10 sm:w-10" />
             </div>
           </Carousel>
         </div>

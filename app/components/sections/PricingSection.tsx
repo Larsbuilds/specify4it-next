@@ -65,16 +65,16 @@ export function PricingSection() {
           variants={fadeIn}
           initial="initial"
           animate="animate"
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl mb-3 sm:mb-4">
             Simple, transparent pricing for everyone
           </h2>
-          <p className="max-w-[600px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
+          <p className="max-w-[600px] mx-auto text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400">
             Choose the perfect plan for your needs
           </p>
         </motion.div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -88,34 +88,34 @@ export function PricingSection() {
                   ? "border-primary shadow-lg scale-105" 
                   : "hover:border-primary/50"
               }`}>
-                <CardHeader>
+                <CardHeader className="p-4 sm:p-6">
                   {plan.popular && (
-                    <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
+                    <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs sm:text-sm font-medium text-primary mb-3 sm:mb-4">
                       Most Popular
                     </div>
                   )}
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <CardDescription className="text-base">{plan.description}</CardDescription>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold">{plan.price}</span>
+                  <CardTitle className="text-xl sm:text-2xl">{plan.name}</CardTitle>
+                  <CardDescription className="text-sm sm:text-base">{plan.description}</CardDescription>
+                  <div className="mt-3 sm:mt-4">
+                    <span className="text-3xl sm:text-4xl font-bold">{plan.price}</span>
                     {plan.period && (
-                      <span className="text-gray-500 dark:text-gray-400">{plan.period}</span>
+                      <span className="text-sm sm:text-base text-gray-500 dark:text-gray-400">{plan.period}</span>
                     )}
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
+                <CardContent className="p-4 sm:p-6">
+                  <ul className="space-y-2 sm:space-y-3">
                     {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-primary shrink-0" />
-                        <span className="text-base">{feature}</span>
+                      <li key={feature} className="flex items-center gap-2 sm:gap-3">
+                        <Check className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                        <span className="text-sm sm:text-base">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="p-4 sm:p-6">
                   <Button 
-                    className="w-full" 
+                    className="w-full text-sm sm:text-base" 
                     variant={plan.popular ? "default" : "outline"}
                     size="lg"
                   >

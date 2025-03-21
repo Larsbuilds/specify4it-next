@@ -24,7 +24,7 @@ export function AboutSection() {
                 initial="initial"
                 animate="animate"
                 transition={{ delay: 0.2 }}
-                className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+                className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl"
               >
                 About Our Company
               </motion.h2>
@@ -33,7 +33,7 @@ export function AboutSection() {
                 initial="initial"
                 animate="animate"
                 transition={{ delay: 0.3 }}
-                className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400"
+                className="max-w-[600px] text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400"
               >
                 We are dedicated to providing the best solutions for our clients. Our team of experts
                 works tirelessly to deliver exceptional results.
@@ -44,15 +44,17 @@ export function AboutSection() {
               initial="initial"
               animate="animate"
               transition={{ delay: 0.4 }}
-              className="flex flex-col gap-4 min-[400px]:flex-row"
+              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             >
-              <Button size="lg">
+              <Button size="lg" className="w-full sm:w-auto text-base sm:text-lg">
                 Learn More <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" size="lg">Contact Us</Button>
+              <Button variant="outline" size="lg" className="w-full sm:w-auto text-base sm:text-lg">
+                Contact Us
+              </Button>
             </motion.div>
           </motion.div>
-          <div className="grid gap-6">
+          <div className="grid gap-4 sm:gap-6">
             <motion.div
               variants={fadeIn}
               initial="initial"
@@ -60,25 +62,25 @@ export function AboutSection() {
               transition={{ delay: 0.2 }}
             >
               <Card className="border-2 hover:border-primary/50 transition-colors">
-                <CardHeader>
-                  <CardTitle className="text-2xl">Our Mission</CardTitle>
-                  <CardDescription className="text-base">
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="text-xl sm:text-2xl">Our Mission</CardTitle>
+                  <CardDescription className="text-sm sm:text-base">
                     To provide innovative solutions that help businesses grow and succeed.
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
-                      <span className="text-base">Quality Service</span>
+                <CardContent className="p-4 sm:p-6">
+                  <ul className="space-y-2 sm:space-y-3">
+                    <li className="flex items-center gap-2 sm:gap-3">
+                      <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                      <span className="text-sm sm:text-base">Quality Service</span>
                     </li>
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
-                      <span className="text-base">Customer Satisfaction</span>
+                    <li className="flex items-center gap-2 sm:gap-3">
+                      <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                      <span className="text-sm sm:text-base">Customer Satisfaction</span>
                     </li>
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
-                      <span className="text-base">Innovation</span>
+                    <li className="flex items-center gap-2 sm:gap-3">
+                      <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                      <span className="text-sm sm:text-base">Innovation</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -91,25 +93,25 @@ export function AboutSection() {
               transition={{ delay: 0.3 }}
             >
               <Card className="border-2 hover:border-primary/50 transition-colors">
-                <CardHeader>
-                  <CardTitle className="text-2xl">Our Vision</CardTitle>
-                  <CardDescription className="text-base">
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="text-xl sm:text-2xl">Our Vision</CardTitle>
+                  <CardDescription className="text-sm sm:text-base">
                     To be the leading provider of innovative solutions in our industry.
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
-                      <span className="text-base">Global Reach</span>
+                <CardContent className="p-4 sm:p-6">
+                  <ul className="space-y-2 sm:space-y-3">
+                    <li className="flex items-center gap-2 sm:gap-3">
+                      <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                      <span className="text-sm sm:text-base">Global Reach</span>
                     </li>
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
-                      <span className="text-base">Industry Leadership</span>
+                    <li className="flex items-center gap-2 sm:gap-3">
+                      <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                      <span className="text-sm sm:text-base">Industry Leadership</span>
                     </li>
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
-                      <span className="text-base">Sustainable Growth</span>
+                    <li className="flex items-center gap-2 sm:gap-3">
+                      <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                      <span className="text-sm sm:text-base">Sustainable Growth</span>
                     </li>
                   </ul>
                 </CardContent>

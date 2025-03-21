@@ -83,16 +83,16 @@ export function FeaturesSection() {
           variants={fadeIn}
           initial="initial"
           animate="animate"
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl mb-3 sm:mb-4">
             Features that make development faster & easier
           </h2>
-          <p className="max-w-[600px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
+          <p className="max-w-[600px] mx-auto text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400">
             Everything you need to build modern web applications
           </p>
         </motion.div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -102,12 +102,12 @@ export function FeaturesSection() {
               transition={{ delay: index * 0.1 }}
             >
               <Card className="h-full border-2 hover:border-primary/50 transition-colors">
-                <CardHeader>
-                  <div className={`w-12 h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-4`}>
-                    <feature.icon className={`w-6 h-6 ${feature.color}`} />
+                <CardHeader className="p-4 sm:p-6">
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-3 sm:mb-4`}>
+                    <feature.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${feature.color}`} />
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                  <CardDescription className="text-base">
+                  <CardTitle className="text-lg sm:text-xl">{feature.title}</CardTitle>
+                  <CardDescription className="text-sm sm:text-base">
                     {feature.description}
                   </CardDescription>
                 </CardHeader>

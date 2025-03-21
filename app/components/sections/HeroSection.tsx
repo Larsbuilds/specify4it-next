@@ -181,7 +181,7 @@ export function HeroSection() {
                 initial="hidden"
                 animate="visible"
                 transition={{ delay: 0.3 }}
-                className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
+                className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
               >
                 Transform Your Business with Our Solutions
               </motion.h1>
@@ -190,7 +190,7 @@ export function HeroSection() {
                 initial="hidden"
                 animate="visible"
                 transition={{ delay: 0.4 }}
-                className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400"
+                className="max-w-[600px] text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400"
               >
                 We provide innovative solutions to help businesses grow and succeed in the digital age.
                 Join thousands of satisfied customers who have transformed their operations.
@@ -201,15 +201,15 @@ export function HeroSection() {
               initial="hidden"
               animate="visible"
               transition={{ delay: 0.5 }}
-              className="flex flex-col gap-4 min-[400px]:flex-row"
+              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             >
-              <motion.div variants={buttonHover} whileHover="hover">
-                <Button size="lg" className="text-lg">
+              <motion.div variants={buttonHover} whileHover="hover" className="w-full sm:w-auto">
+                <Button size="lg" className="text-base sm:text-lg w-full sm:w-auto">
                   Get Started
                 </Button>
               </motion.div>
-              <motion.div variants={buttonHover} whileHover="hover">
-                <Button variant="outline" size="lg" className="text-lg">
+              <motion.div variants={buttonHover} whileHover="hover" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="text-base sm:text-lg w-full sm:w-auto">
                   Learn More
                 </Button>
               </motion.div>
@@ -220,7 +220,7 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.2 }}
-            className="relative"
+            className="relative mt-8 lg:mt-0"
           >
             <motion.div
               variants={glowEffect}
@@ -232,20 +232,20 @@ export function HeroSection() {
               variants={gradientShift}
               whileHover="hover"
               initial="initial"
-              className="relative bg-background border rounded-2xl p-8 shadow-lg bg-gradient-to-br from-background via-background/95 to-background/90"
+              className="relative bg-background border rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg bg-gradient-to-br from-background via-background/95 to-background/90"
             >
-              <div className="grid gap-4">
+              <div className="grid gap-3 sm:gap-4">
                 <motion.div 
                   variants={cardAnimation}
                   initial="hidden"
                   animate="visible"
                   whileHover="hover"
                   transition={{ delay: 0.3 }}
-                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-primary/5 transition-colors"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg hover:bg-primary/5 transition-colors"
                 >
-                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg
-                      className="h-6 w-6 text-primary"
+                      className="h-5 w-5 sm:h-6 sm:w-6 text-primary"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -259,8 +259,8 @@ export function HeroSection() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold">Lightning Fast</h3>
-                    <p className="text-sm text-gray-500">Optimized performance</p>
+                    <h3 className="font-semibold text-sm sm:text-base">Lightning Fast</h3>
+                    <p className="text-xs sm:text-sm text-gray-500">Optimized performance</p>
                   </div>
                 </motion.div>
                 <motion.div 
@@ -269,11 +269,11 @@ export function HeroSection() {
                   animate="visible"
                   whileHover="hover"
                   transition={{ delay: 0.4 }}
-                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-primary/5 transition-colors"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg hover:bg-primary/5 transition-colors"
                 >
-                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg
-                      className="h-6 w-6 text-primary"
+                      className="h-5 w-5 sm:h-6 sm:w-6 text-primary"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -287,8 +287,8 @@ export function HeroSection() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold">Secure</h3>
-                    <p className="text-sm text-gray-500">Enterprise-grade security</p>
+                    <h3 className="font-semibold text-sm sm:text-base">Secure</h3>
+                    <p className="text-xs sm:text-sm text-gray-500">Enterprise-grade security</p>
                   </div>
                 </motion.div>
                 <motion.div 
@@ -297,11 +297,11 @@ export function HeroSection() {
                   animate="visible"
                   whileHover="hover"
                   transition={{ delay: 0.5 }}
-                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-primary/5 transition-colors"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg hover:bg-primary/5 transition-colors"
                 >
-                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg
-                      className="h-6 w-6 text-primary"
+                      className="h-5 w-5 sm:h-6 sm:w-6 text-primary"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -315,8 +315,8 @@ export function HeroSection() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold">Scalable</h3>
-                    <p className="text-sm text-gray-500">Grows with your business</p>
+                    <h3 className="font-semibold text-sm sm:text-base">Scalable</h3>
+                    <p className="text-xs sm:text-sm text-gray-500">Grows with your business</p>
                   </div>
                 </motion.div>
               </div>
