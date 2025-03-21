@@ -66,7 +66,7 @@ export function AnalyticsDashboard() {
             Analytics Dashboard
           </h2>
           <p className="max-w-[600px] mx-auto text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400">
-            Real-time insights into your website's performance and user behavior
+            Real-time insights into your website&apos;s performance and user behavior
           </p>
         </motion.div>
 
