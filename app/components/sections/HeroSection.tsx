@@ -59,14 +59,13 @@ export function HeroSection() {
             <div className="flex flex-col justify-center space-y-6">
               <div className="space-y-4">
                 <div className="inline-flex items-center rounded-lg bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
-                  Welcome to Our Platform
+                  Welcome to your Platform
                 </div>
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                  Larsbuilds Web Hub
+                  This is your new Website
                 </h1>
                 <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                  We provide innovative solutions to help businesses grow and succeed in the digital age.
-                  Join thousands of satisfied customers who have transformed their operations.
+                  Reach out for a demo!
                 </p>
               </div>
               <div className="flex flex-col gap-4 min-[400px]:flex-row">
@@ -174,7 +173,7 @@ export function HeroSection() {
                 transition={{ delay: 0.2 }}
                 className="inline-flex items-center rounded-lg bg-primary/10 px-4 py-1 text-sm font-medium text-primary"
               >
-                Welcome to Our Platform
+                Welcome to your Platform
               </motion.div>
               <motion.h1 
                 variants={slideIn}
@@ -183,7 +182,7 @@ export function HeroSection() {
                 transition={{ delay: 0.3 }}
                 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
               >
-                Larsbuilds Web Hub
+                This is your new Website
               </motion.h1>
               <motion.p 
                 variants={slideIn}
@@ -192,8 +191,7 @@ export function HeroSection() {
                 transition={{ delay: 0.4 }}
                 className="max-w-[600px] text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400"
               >
-                We provide innovative solutions to help businesses grow and succeed in the digital age.
-                Join thousands of satisfied customers who have transformed their operations.
+                Reach out for a demo!
               </motion.p>
             </div>
             <motion.div 
