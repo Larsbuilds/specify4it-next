@@ -1,0 +1,79 @@
+{
+  "Metadata": {
+    "title": "Ihre Website",
+    "description": "Ihre moderne Web-Präsenz"
+  },
+  "Common": {
+    "navigation": {
+      "home": "Start",
+      "features": "Funktionen",
+      "portfolio": "Portfolio",
+      "about": "Über uns",
+      "contact": "Kontakt"
+    }
+  },
+  "Hero": {
+    "role": "Willkommen auf Ihrer Plattform",
+    "title": "Dies ist Ihre neue Website",
+    "subtitle": "Kontaktieren Sie uns für eine Demo!",
+    "cta": {
+      "primary": "Loslegen",
+      "secondary": "Mehr erfahren"
+    },
+    "features": {
+      "fast": {
+        "title": "Blitzschnell",
+        "description": "Optimierte Leistung"
+      },
+      "secure": {
+        "title": "Sicher",
+        "description": "Unternehmensweite Sicherheit"
+      },
+      "scalable": {
+        "title": "Skalierbar",
+        "description": "Wächst mit Ihrem Unternehmen"
+      }
+    }
+  },
+  "Features": {
+    "title": "Funktionen",
+    "subtitle": "Was wir anbieten",
+    "features": [
+      {
+        "id": "feature-1",
+        "title": "Funktion Eins",
+        "content": "Beschreibung Ihrer ersten Funktion"
+      },
+      {
+        "id": "feature-2",
+        "title": "Funktion Zwei",
+        "content": "Beschreibung Ihrer zweiten Funktion"
+      }
+    ]
+  },
+  "Portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Unsere Arbeit",
+    "projects": [
+      {
+        "id": "project-1",
+        "title": "Projekt Eins",
+        "content": "Beschreibung Ihres ersten Projekts"
+      }
+    ]
+  },
+  "About": {
+    "title": "Über Uns",
+    "content": "Ihre Firmenbeschreibung"
+  },
+  "Contact": {
+    "title": "Kontakt",
+    "subtitle": "Kontaktieren Sie uns",
+    "form": {
+      "name": "Ihr Name",
+      "email": "Ihre E-Mail",
+      "message": "Ihre Nachricht",
+      "submit": "Nachricht senden"
+    }
+  }
+}
