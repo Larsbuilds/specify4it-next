@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const withNextIntl = require('next-intl/plugin')()
+
 const nextConfig = {
   reactStrictMode: true,
   distDir: '.next',
@@ -64,4 +66,4 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
 }
 
-module.exports = nextConfig 
+module.exports = withNextIntl(nextConfig) 

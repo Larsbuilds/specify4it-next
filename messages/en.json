@@ -1,0 +1,23 @@
+{
+  "Index": {
+    "title": "Welcome to your Platform",
+    "description": "This is your new Website",
+    "subtitle": "Reach out for a demo!",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "Features": {
+    "lightningFast": {
+      "title": "Lightning Fast",
+      "description": "Optimized performance"
+    },
+    "secure": {
+      "title": "Secure",
+      "description": "Enterprise-grade security"
+    },
+    "scalable": {
+      "title": "Scalable",
+      "description": "Grows with your business"
+    }
+  }
+} 
