@@ -1,8 +1,8 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { motion, useReducedMotion } from "framer-motion"
 import { useEffect, useState } from "react"
+import { DynamicImport } from "@/components/ui/dynamic-import"
 
 const fadeIn = {
   hidden: { opacity: 0 },
@@ -27,17 +27,6 @@ const glowEffect = {
 const gradientShift = {
   initial: { backgroundPosition: "0% 0%" },
   hover: { backgroundPosition: "100% 100%", transition: { duration: 0.5 } }
-}
-
-const buttonHover = {
-  initial: { scale: 1 },
-  hover: { scale: 1.05, transition: { duration: 0.2 } }
-}
-
-const cardAnimation = {
-  hidden: { y: 50, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
-  hover: { y: -5, transition: { duration: 0.2 } }
 }
 
 export function HeroSection() {
@@ -69,80 +58,31 @@ export function HeroSection() {
                 </p>
               </div>
               <div className="flex flex-col gap-4 min-[400px]:flex-row">
-                <Button size="lg" className="text-lg">
-                  Get Started
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg">
-                  Learn More
-                </Button>
+                <DynamicImport
+                  importFn={() => import("./AnimatedButton")}
+                  className="w-full sm:w-auto"
+                />
+                <DynamicImport
+                  importFn={() => import("./AnimatedButton")}
+                  className="w-full sm:w-auto"
+                />
               </div>
             </div>
             <div className="relative">
               <div className="relative bg-background border rounded-2xl p-8 shadow-lg">
                 <div className="grid gap-4">
-                  <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <svg
-                        className="h-6 w-6 text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Lightning Fast</h3>
-                      <p className="text-sm text-gray-500">Optimized performance</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <svg
-                        className="h-6 w-6 text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Secure</h3>
-                      <p className="text-sm text-gray-500">Enterprise-grade security</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <svg
-                        className="h-6 w-6 text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Scalable</h3>
-                      <p className="text-sm text-gray-500">Grows with your business</p>
-                    </div>
-                  </div>
+                  <DynamicImport
+                    importFn={() => import("./FeatureCard")}
+                    className="h-12"
+                  />
+                  <DynamicImport
+                    importFn={() => import("./FeatureCard")}
+                    className="h-12"
+                  />
+                  <DynamicImport
+                    importFn={() => import("./FeatureCard")}
+                    className="h-12"
+                  />
                 </div>
               </div>
             </div>
@@ -207,16 +147,14 @@ export function HeroSection() {
               transition={{ delay: 0.1 }}
               className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             >
-              <motion.div variants={buttonHover} whileHover="hover" className="w-full sm:w-auto">
-                <Button size="lg" className="text-base sm:text-lg w-full sm:w-auto">
-                  Get Started
-                </Button>
-              </motion.div>
-              <motion.div variants={buttonHover} whileHover="hover" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="text-base sm:text-lg w-full sm:w-auto">
-                  Learn More
-                </Button>
-              </motion.div>
+              <DynamicImport
+                importFn={() => import("./AnimatedButton")}
+                className="w-full sm:w-auto"
+              />
+              <DynamicImport
+                importFn={() => import("./AnimatedButton")}
+                className="w-full sm:w-auto"
+              />
             </motion.div>
           </motion.div>
           <motion.div
@@ -239,90 +177,18 @@ export function HeroSection() {
               className="relative bg-background border rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg bg-gradient-to-br from-background via-background/95 to-background/90"
             >
               <div className="grid gap-3 sm:gap-4">
-                <motion.div 
-                  variants={cardAnimation}
-                  initial="hidden"
-                  animate="visible"
-                  whileHover="hover"
-                  transition={{ delay: 0.3 }}
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg hover:bg-primary/5 transition-colors"
-                >
-                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <svg
-                      className="h-5 w-5 sm:h-6 sm:w-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-sm sm:text-base">Lightning Fast</h3>
-                    <p className="text-xs sm:text-sm text-gray-500">Optimized performance</p>
-                  </div>
-                </motion.div>
-                <motion.div 
-                  variants={cardAnimation}
-                  initial="hidden"
-                  animate="visible"
-                  whileHover="hover"
-                  transition={{ delay: 0.4 }}
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg hover:bg-primary/5 transition-colors"
-                >
-                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <svg
-                      className="h-5 w-5 sm:h-6 sm:w-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-sm sm:text-base">Secure</h3>
-                    <p className="text-xs sm:text-sm text-gray-500">Enterprise-grade security</p>
-                  </div>
-                </motion.div>
-                <motion.div 
-                  variants={cardAnimation}
-                  initial="hidden"
-                  animate="visible"
-                  whileHover="hover"
-                  transition={{ delay: 0.5 }}
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg hover:bg-primary/5 transition-colors"
-                >
-                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <svg
-                      className="h-5 w-5 sm:h-6 sm:w-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-sm sm:text-base">Scalable</h3>
-                    <p className="text-xs sm:text-sm text-gray-500">Grows with your business</p>
-                  </div>
-                </motion.div>
+                <DynamicImport
+                  importFn={() => import("./FeatureCard")}
+                  className="h-12"
+                />
+                <DynamicImport
+                  importFn={() => import("./FeatureCard")}
+                  className="h-12"
+                />
+                <DynamicImport
+                  importFn={() => import("./FeatureCard")}
+                  className="h-12"
+                />
               </div>
             </motion.div>
           </motion.div>

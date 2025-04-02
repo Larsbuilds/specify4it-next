@@ -1,12 +1,15 @@
 "use client"
 
 import * as React from "react"
-import { motion, HTMLMotionProps } from "framer-motion"
+import { motion, HTMLMotionProps, PanInfo } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { cardHover, glowEffect, borderGlow } from "@/lib/animations"
 
 interface CardProps extends Omit<HTMLMotionProps<"div">, "ref"> {
   className?: string;
+  onDrag?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
+  onDragStart?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
+  onDragEnd?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
