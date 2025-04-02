@@ -40,8 +40,6 @@ const nextConfig = {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
   },
-  // Enable HTTP/2
-  http2: true,
   // Optimize for LCP
   async headers() {
     return [
