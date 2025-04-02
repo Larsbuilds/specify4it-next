@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-const withNextIntl = require('next-intl/plugin')(
-  './i18n.ts'
-);
-
 const nextConfig = {
   reactStrictMode: true,
   distDir: '.next',
@@ -44,8 +40,6 @@ const nextConfig = {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
   },
-  // Enable HTTP/2
-  http2: true,
   // Optimize for LCP
   async headers() {
     return [
@@ -68,4 +62,4 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
 }
 
-module.exports = withNextIntl(nextConfig) 
+module.exports = nextConfig 
