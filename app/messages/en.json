@@ -1,0 +1,119 @@
+{
+  "Metadata": {
+    "title": "Lars Tischer - Web Developer",
+    "description": "Professional web developer specializing in modern web applications with React, Next.js, and TypeScript"
+  },
+  "Navigation": {
+    "brand": "Lars Tischer",
+    "home": "Home",
+    "features": "Features",
+    "about": "About",
+    "testimonials": "Testimonials",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "title": "Building the Future of Web Development",
+    "subtitle": "Creating modern, responsive, and accessible web applications with cutting-edge technologies",
+    "cta": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "Features": {
+    "title": "Features",
+    "subtitle": "Everything you need to build amazing web applications",
+    "cards": {
+      "responsive": {
+        "title": "Responsive Design",
+        "description": "Your application will look great on any device, from phones to desktops"
+      },
+      "performance": {
+        "title": "High Performance",
+        "description": "Optimized for speed and efficiency with modern web technologies"
+      },
+      "accessibility": {
+        "title": "Accessibility",
+        "description": "Built with accessibility in mind, ensuring everyone can use your application"
+      }
+    }
+  },
+  "About": {
+    "title": "About Me",
+    "subtitle": "Passionate about creating exceptional web experiences",
+    "background": {
+      "title": "Background",
+      "content": "With years of experience in web development, I specialize in building modern, scalable applications using React, Next.js, and TypeScript"
+    },
+    "mission": {
+      "title": "Mission",
+      "content": "To help businesses and individuals create outstanding web presence through innovative solutions"
+    },
+    "values": {
+      "title": "Values",
+      "content": "Quality, Innovation, and User Experience are at the core of everything I build"
+    }
+  },
+  "Testimonials": {
+    "title": "What People Say",
+    "subtitle": "Hear from satisfied clients about their experience",
+    "testimonial1": {
+      "content": "Lars delivered an exceptional website that exceeded our expectations. His attention to detail and technical expertise made the process smooth and enjoyable.",
+      "name": "Sarah Johnson",
+      "role": "CEO, TechStart"
+    },
+    "testimonial2": {
+      "content": "Working with Lars was a pleasure. He understood our needs perfectly and delivered a modern, fast website that our customers love.",
+      "name": "Michael Chen",
+      "role": "Marketing Director, InnovateCo"
+    },
+    "testimonial3": {
+      "content": "The website Lars built for us has significantly improved our online presence. His technical skills and design sensibility are outstanding.",
+      "name": "Emma Davis",
+      "role": "Founder, CreativeStudio"
+    }
+  },
+  "Pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that best fits your needs",
+    "hobby": {
+      "name": "Hobby",
+      "description": "Perfect for personal projects",
+      "price": "$49",
+      "period": "/month",
+      "features": [
+        "Up to 5 pages",
+        "Basic SEO optimization",
+        "Responsive design",
+        "Contact form"
+      ],
+      "cta": "Get Started"
+    },
+    "pro": {
+      "name": "Professional",
+      "description": "Ideal for growing businesses",
+      "price": "$99",
+      "period": "/month",
+      "features": [
+        "Up to 10 pages",
+        "Advanced SEO optimization",
+        "Custom animations",
+        "Blog integration",
+        "Priority support"
+      ],
+      "cta": "Go Pro"
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "For large organizations",
+      "price": "Custom",
+      "period": "",
+      "features": [
+        "Unlimited pages",
+        "Custom features",
+        "Dedicated support",
+        "Performance optimization",
+        "Security audit"
+      ],
+      "cta": "Contact Us"
+    }
+  }
+}

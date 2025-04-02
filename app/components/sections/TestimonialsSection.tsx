@@ -1,5 +1,4 @@
-"use client"
-
+import { getTranslations } from 'next-intl/server'
 import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
@@ -8,144 +7,76 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { motion } from "framer-motion"
-import { fadeIn } from "@/lib/animations"
-import { useCallback } from "react"
-import type { UseEmblaCarouselType } from "embla-carousel-react"
+import { AnimatedSection } from './AnimatedSection'
 
-const testimonials = [
-  {
-    name: "Sarah Johnson",
-    role: "CEO, TechStart",
-    content: "This platform has transformed how we manage our business. The efficiency gains are remarkable.",
-    rating: 5,
-  },
-  {
-    name: "Michael Chen",
-    role: "CTO, InnovateCorp",
-    content: "The best solution we&apos;ve found in the market. Highly recommended for any growing business.",
-    rating: 5,
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Product Manager, GrowthCo",
-    content: "Incredible features and excellent support. It&apos;s exactly what we needed to scale our operations.",
-    rating: 5,
-  },
-  {
-    name: "David Kim",
-    role: "Founder, StartupX",
-    content: "The user experience is outstanding. It&apos;s intuitive and powerful at the same time.",
-    rating: 5,
-  },
-]
+export async function TestimonialsSection() {
+  const t = await getTranslations('Testimonials')
 
-export function TestimonialsSection() {
+  // Get testimonials array from translation
+  const testimonials = [
+    {
+      content: t('testimonial1.content'),
+      name: t('testimonial1.name'),
+      role: t('testimonial1.role')
+    },
+    {
+      content: t('testimonial2.content'),
+      name: t('testimonial2.name'),
+      role: t('testimonial2.role')
+    },
+    {
+      content: t('testimonial3.content'),
+      name: t('testimonial3.name'),
+      role: t('testimonial3.role')
+    }
+  ]
+
   return (
-    <section id="testimonials" className="py-24 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] -z-10" />
-      <div className="container px-4 md:px-6">
-        <motion.div
-          variants={fadeIn}
-          initial="initial"
-          animate="animate"
-          className="text-center mb-8 sm:mb-12"
-        >
-          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl mb-3 sm:mb-4">
-            What Our Clients Say
-          </h2>
-          <p className="max-w-[600px] mx-auto text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400">
-            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about their experience.
-          </p>
-        </motion.div>
-        <div className="relative mx-auto max-w-7xl">
+    <AnimatedSection>
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] -z-10" />
+        <div className="container px-4 md:px-6">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              {t('title')}
+            </h2>
+            <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+              {t('subtitle')}
+            </p>
+          </div>
           <Carousel
             opts={{
               align: "start",
               loop: true,
-              containScroll: "trimSnaps",
-              dragFree: false,
             }}
-            className="w-full"
-            setApi={(api: UseEmblaCarouselType[1]) => {
-              if (!api) return;
-
-              // Auto-play functionality
-              let autoplayInterval: NodeJS.Timeout;
-              const startAutoplay = () => {
-                autoplayInterval = setInterval(() => {
-                  if (api.canScrollNext()) {
-                    api.scrollNext();
-                  }
-                }, 5000); // Change slide every 5 seconds
-              };
-              const stopAutoplay = () => {
-                if (autoplayInterval) {
-                  clearInterval(autoplayInterval);
-                }
-              };
-
-              // Start autoplay when the carousel is mounted
-              startAutoplay();
-
-              // Stop autoplay when the user interacts with the carousel
-              api.on("pointerDown", stopAutoplay);
-              api.on("pointerUp", startAutoplay);
-              api.on("settle", startAutoplay);
-
-              // Cleanup on unmount
-              return () => {
-                stopAutoplay();
-                api.off("pointerDown", stopAutoplay);
-                api.off("pointerUp", startAutoplay);
-                api.off("settle", startAutoplay);
-              };
-            }}
+            className="w-full max-w-5xl mx-auto"
           >
-            <CarouselContent className="-ml-2 md:-ml-4">
+            <CarouselContent>
               {testimonials.map((testimonial, index) => (
-                <CarouselItem 
-                  key={index} 
-                  className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
-                  aria-label={`Testimonial ${index + 1} of ${testimonials.length}`}
-                >
-                  <div className="p-1">
-                    <Card>
-                      <CardContent className="flex flex-col justify-between min-h-[200px] sm:min-h-[250px] p-4 sm:p-6">
-                        <div className="space-y-3 sm:space-y-4">
-                          <div className="flex items-center gap-1">
-                            {[...Array(testimonial.rating)].map((_, i) => (
-                              <svg
-                                key={i}
-                                className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.363 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                              </svg>
-                            ))}
-                          </div>
-                          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                            &ldquo;{testimonial.content}&rdquo;
-                          </p>
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex flex-col gap-4">
+                        <p className="text-gray-500 dark:text-gray-400">
+                          "{testimonial.content}"
+                        </p>
+                        <div>
+                          <div className="font-semibold">{testimonial.name}</div>
+                          <div className="text-sm text-gray-500">{testimonial.role}</div>
                         </div>
-                        <div className="mt-4 sm:mt-6">
-                          <h4 className="text-sm sm:text-base font-semibold">{testimonial.name}</h4>
-                          <p className="text-xs sm:text-sm text-gray-500">{testimonial.role}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center gap-2 mt-4 md:mt-0 md:absolute md:inset-y-0 md:left-0 md:right-0 md:justify-between md:items-center md:pointer-events-none">
-              <CarouselPrevious className="relative md:absolute md:left-0 md:translate-x-[-3rem] pointer-events-auto h-8 w-8 sm:h-10 sm:w-10" />
-              <CarouselNext className="relative md:absolute md:right-0 md:translate-x-[3rem] pointer-events-auto h-8 w-8 sm:h-10 sm:w-10" />
+            <div className="flex justify-center gap-2 mt-4">
+              <CarouselPrevious className="relative" />
+              <CarouselNext className="relative" />
             </div>
           </Carousel>
         </div>
-      </div>
-    </section>
+      </section>
+    </AnimatedSection>
   )
-} 
+}

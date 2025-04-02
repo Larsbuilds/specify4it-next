@@ -1,7 +1,4 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { fadeIn } from "@/lib/animations"
+import { getTranslations } from 'next-intl/server'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { 
   Users, 
@@ -13,6 +10,7 @@ import {
   Zap,
   AlertCircle
 } from "lucide-react"
+import { AnimatedSection } from './AnimatedSection'
 
 // This is mock data for demo purposes
 // In production, this would come from Vercel Analytics API
@@ -21,209 +19,148 @@ const analyticsData = {
   uniqueVisitors: 789,
   averageSessionDuration: "2m 30s",
   bounceRate: "45%",
-  topPages: [
-    { path: "/", views: 500 },
-    { path: "/about", views: 300 },
-    { path: "/features", views: 200 },
-    { path: "/pricing", views: 150 },
-    { path: "/contact", views: 84 },
-  ],
   devices: {
-    mobile: 65,
-    desktop: 35,
+    desktop: 45,
+    mobile: 35,
+    tablet: 20,
   },
   performance: {
-    fcp: "1.2s",
-    lcp: "2.5s",
-    fid: "20ms",
-    cls: "0.1",
-  },
-  errors: 12,
-  countries: [
-    { country: "US", visitors: 500 },
-    { country: "UK", visitors: 300 },
-    { country: "DE", visitors: 200 },
-    { country: "FR", visitors: 150 },
-    { country: "JP", visitors: 100 },
-  ],
-  overview: {
-    averageSessionDuration: "2m 30s",
-  },
+    score: 98,
+    issues: 2,
+  }
 }
 
-export function AnalyticsDashboard() {
+export async function AnalyticsDashboard() {
+  const t = await getTranslations('Analytics')
+
   return (
-    <section id="analytics" className="py-24 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] -z-10" />
-      <div className="container px-4 md:px-6">
-        <motion.div
-          variants={fadeIn}
-          initial="initial"
-          animate="animate"
-          className="text-center mb-12"
-        >
-          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl mb-3 sm:mb-4">
-            Analytics Dashboard
-          </h2>
-          <p className="max-w-[600px] mx-auto text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400">
-            Real-time insights into your website&apos;s performance and user behavior
-          </p>
-        </motion.div>
-
-        {/* Overview Cards */}
-        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Page Views</CardTitle>
-              <Activity className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{analyticsData.pageViews}</div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Unique Visitors</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{analyticsData.uniqueVisitors}</div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Avg. Session Duration</CardTitle>
-              <Clock className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{analyticsData.overview.averageSessionDuration}</div>
-              <p className="text-xs text-muted-foreground">Target: &lt; 3 minutes</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Bounce Rate</CardTitle>
-              <AlertCircle className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{analyticsData.bounceRate}</div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Performance Metrics */}
-        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">First Contentful Paint</CardTitle>
-              <Zap className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{analyticsData.performance.fcp}</div>
-              <p className="text-xs text-muted-foreground">Target: &lt; 1.8s</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Largest Contentful Paint</CardTitle>
-              <Zap className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{analyticsData.performance.lcp}</div>
-              <p className="text-xs text-muted-foreground">Target: &lt; 2.5s</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">First Input Delay</CardTitle>
-              <Zap className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{analyticsData.performance.fid}</div>
-              <p className="text-xs text-muted-foreground">Target: &lt; 100ms</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Cumulative Layout Shift</CardTitle>
-              <Zap className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{analyticsData.performance.cls}</div>
-              <p className="text-xs text-muted-foreground">Target: &lt; 0.1</p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Device Distribution */}
-        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 mb-8">
-          <Card>
-            <CardHeader>
-              <CardTitle>Device Distribution</CardTitle>
-              <CardDescription>Visitors by device type</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center justify-between mb-4">
+    <AnimatedSection>
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] -z-10" />
+        <div className="container px-4 md:px-6">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              {t('title')}
+            </h2>
+            <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+              {t('subtitle')}
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <Card>
+              <CardHeader>
                 <div className="flex items-center gap-2">
-                  <Smartphone className="h-4 w-4" />
-                  <span>Mobile</span>
+                  <Users className="h-4 w-4 text-primary" />
+                  <CardTitle>{t('stats.visitors.title')}</CardTitle>
                 </div>
+                <CardDescription>{t('stats.visitors.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{analyticsData.uniqueVisitors}</div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
                 <div className="flex items-center gap-2">
-                  <Monitor className="h-4 w-4" />
-                  <span>Desktop</span>
+                  <Clock className="h-4 w-4 text-primary" />
+                  <CardTitle>{t('stats.duration.title')}</CardTitle>
                 </div>
-              </div>
-              <div className="flex h-4 rounded-full bg-muted">
-                <div 
-                  className="flex h-full rounded-full bg-primary" 
-                  style={{ width: `${analyticsData.devices.mobile}%` }}
-                />
-              </div>
-              <div className="mt-2 text-sm text-muted-foreground">
-                {analyticsData.devices.mobile}% Mobile, {analyticsData.devices.desktop}% Desktop
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Top Pages</CardTitle>
-              <CardDescription>Most visited pages</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {analyticsData.topPages.map((page, index) => (
-                  <div key={index} className="flex items-center justify-between">
-                    <span className="text-sm">{page.path}</span>
-                    <span className="text-sm font-medium">{page.views} views</span>
+                <CardDescription>{t('stats.duration.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{analyticsData.averageSessionDuration}</div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <Activity className="h-4 w-4 text-primary" />
+                  <CardTitle>{t('stats.bounce.title')}</CardTitle>
+                </div>
+                <CardDescription>{t('stats.bounce.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{analyticsData.bounceRate}</div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <Globe className="h-4 w-4 text-primary" />
+                  <CardTitle>{t('stats.pages.title')}</CardTitle>
+                </div>
+                <CardDescription>{t('stats.pages.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{analyticsData.pageViews}</div>
+              </CardContent>
+            </Card>
+          </div>
+          <div className="grid gap-6 mt-6 md:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <Monitor className="h-4 w-4 text-primary" />
+                  <CardTitle>{t('devices.title')}</CardTitle>
+                </div>
+                <CardDescription>{t('devices.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid gap-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Monitor className="h-4 w-4" />
+                      <span>{t('devices.desktop')}</span>
+                    </div>
+                    <span>{analyticsData.devices.desktop}%</span>
                   </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Smartphone className="h-4 w-4" />
+                      <span>{t('devices.mobile')}</span>
+                    </div>
+                    <span>{analyticsData.devices.mobile}%</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Smartphone className="h-4 w-4" />
+                      <span>{t('devices.tablet')}</span>
+                    </div>
+                    <span>{analyticsData.devices.tablet}%</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-primary" />
+                  <CardTitle>{t('performance.title')}</CardTitle>
+                </div>
+                <CardDescription>{t('performance.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid gap-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Zap className="h-4 w-4" />
+                      <span>{t('performance.score')}</span>
+                    </div>
+                    <span>{analyticsData.performance.score}/100</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <AlertCircle className="h-4 w-4" />
+                      <span>{t('performance.issues')}</span>
+                    </div>
+                    <span>{analyticsData.performance.issues}</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
-
-        {/* Geographic Distribution */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Geographic Distribution</CardTitle>
-            <CardDescription>Visitors by country</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {analyticsData.countries.map((country, index) => (
-                <div key={index} className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Globe className="h-4 w-4" />
-                    <span className="text-sm">{country.country}</span>
-                  </div>
-                  <span className="text-sm font-medium">{country.visitors} visitors</span>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
+      </section>
+    </AnimatedSection>
   )
-} 
+}

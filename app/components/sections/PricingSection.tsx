@@ -1,132 +1,111 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { fadeIn, scaleIn } from "@/lib/animations"
+import { getTranslations } from 'next-intl/server'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check } from "lucide-react"
+import { AnimatedSection } from './AnimatedSection'
 
-const plans = [
-  {
-    name: "Hobby",
-    description: "Perfect for side projects and learning",
-    price: "Free",
-    features: [
-      "Up to 3 projects",
-      "Basic components",
-      "Community support",
-      "Dark mode",
-      "Basic analytics",
-    ],
-    cta: "Get Started",
-    popular: false,
-  },
-  {
-    name: "Pro",
-    description: "For professional developers and small teams",
-    price: "$19",
-    period: "/mo",
-    features: [
-      "Unlimited projects",
-      "Advanced components",
-      "Priority support",
-      "Custom themes",
-      "Advanced analytics",
-      "Team collaboration",
-      "API access",
-    ],
-    cta: "Get Started",
-    popular: true,
-  },
-  {
-    name: "Enterprise",
-    description: "For large teams and organizations",
-    price: "Custom",
-    features: [
-      "Everything in Pro",
-      "Custom integrations",
-      "Dedicated support",
-      "SLA guarantee",
-      "Custom branding",
-      "Advanced security",
-      "Training sessions",
-    ],
-    cta: "Contact Sales",
-    popular: false,
-  },
-]
+export async function PricingSection() {
+  const t = await getTranslations('Pricing')
 
-export function PricingSection() {
   return (
-    <section id="pricing" className="py-24 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] -z-10" />
-      <div className="container px-4 md:px-6">
-        <motion.div
-          variants={fadeIn}
-          initial="initial"
-          animate="animate"
-          className="text-center mb-8 sm:mb-12"
-        >
-          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl mb-3 sm:mb-4">
-            Simple, transparent pricing for everyone
-          </h2>
-          <p className="max-w-[600px] mx-auto text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400">
-            Choose the perfect plan for your needs
-          </p>
-        </motion.div>
-        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              variants={scaleIn}
-              initial="initial"
-              animate="animate"
-              transition={{ delay: index * 0.1 }}
-            >
-              <Card className={`h-full border-2 transition-colors ${
-                plan.popular 
-                  ? "border-primary shadow-lg scale-105" 
-                  : "hover:border-primary/50"
-              }`}>
-                <CardHeader className="p-4 sm:p-6">
-                  {plan.popular && (
-                    <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs sm:text-sm font-medium text-primary mb-3 sm:mb-4">
-                      Most Popular
-                    </div>
-                  )}
-                  <CardTitle className="text-xl sm:text-2xl">{plan.name}</CardTitle>
-                  <CardDescription className="text-sm sm:text-base">{plan.description}</CardDescription>
-                  <div className="mt-3 sm:mt-4">
-                    <span className="text-3xl sm:text-4xl font-bold">{plan.price}</span>
-                    {plan.period && (
-                      <span className="text-sm sm:text-base text-gray-500 dark:text-gray-400">{plan.period}</span>
-                    )}
-                  </div>
-                </CardHeader>
-                <CardContent className="p-4 sm:p-6">
-                  <ul className="space-y-2 sm:space-y-3">
-                    {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2 sm:gap-3">
-                        <Check className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
-                        <span className="text-sm sm:text-base">{feature}</span>
+    <AnimatedSection>
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] -z-10" />
+        <div className="container px-4 md:px-6">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              {t('title')}
+            </h2>
+            <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+              {t('subtitle')}
+            </p>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-2 items-start">
+            {/* Hobby Plan */}
+            <Card className="relative overflow-hidden">
+              <CardHeader>
+                <CardTitle>{t('hobby.name')}</CardTitle>
+                <CardDescription>{t('hobby.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-4xl font-bold mb-6">{t('hobby.price')}</div>
+                <ul className="space-y-2">
+                  {t.rich('hobby.features', {
+                    li: (children) => (
+                      <li className="flex items-center">
+                        <Check className="mr-2 h-4 w-4 text-primary" />
+                        <span>{children}</span>
                       </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter className="p-4 sm:p-6">
-                  <Button 
-                    className="w-full text-sm sm:text-base" 
-                    variant={plan.popular ? "default" : "outline"}
-                    size="lg"
-                  >
-                    {plan.cta}
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
+                    )
+                  })}
+                </ul>
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full" variant="outline">
+                  {t('hobby.cta')}
+                </Button>
+              </CardFooter>
+            </Card>
+
+            {/* Pro Plan */}
+            <Card className="relative overflow-hidden border-primary">
+              <CardHeader>
+                <CardTitle>{t('pro.name')}</CardTitle>
+                <CardDescription>{t('pro.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-4xl font-bold mb-6">
+                  {t('pro.price')}
+                  <span className="text-sm font-normal text-muted-foreground">
+                    {t('pro.period')}
+                  </span>
+                </div>
+                <ul className="space-y-2">
+                  {t.rich('pro.features', {
+                    li: (children) => (
+                      <li className="flex items-center">
+                        <Check className="mr-2 h-4 w-4 text-primary" />
+                        <span>{children}</span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full">
+                  {t('pro.cta')}
+                </Button>
+              </CardFooter>
+            </Card>
+
+            {/* Enterprise Plan */}
+            <Card className="relative overflow-hidden">
+              <CardHeader>
+                <CardTitle>{t('enterprise.name')}</CardTitle>
+                <CardDescription>{t('enterprise.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-4xl font-bold mb-6">{t('enterprise.price')}</div>
+                <ul className="space-y-2">
+                  {t.rich('enterprise.features', {
+                    li: (children) => (
+                      <li className="flex items-center">
+                        <Check className="mr-2 h-4 w-4 text-primary" />
+                        <span>{children}</span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full" variant="outline">
+                  {t('enterprise.cta')}
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </AnimatedSection>
   )
-} 
+}

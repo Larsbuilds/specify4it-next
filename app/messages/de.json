@@ -1,0 +1,119 @@
+{
+  "Metadata": {
+    "title": "Lars Tischer - Webentwickler",
+    "description": "Professioneller Webentwickler, spezialisiert auf moderne Webanwendungen mit React, Next.js und TypeScript"
+  },
+  "Navigation": {
+    "brand": "Lars Tischer",
+    "home": "Start",
+    "features": "Funktionen",
+    "about": "Über mich",
+    "testimonials": "Referenzen",
+    "pricing": "Preise",
+    "contact": "Kontakt"
+  },
+  "Hero": {
+    "title": "Die Zukunft der Webentwicklung",
+    "subtitle": "Entwicklung moderner, responsiver und barrierefreier Webanwendungen mit zukunftsweisenden Technologien",
+    "cta": "Loslegen",
+    "learnMore": "Mehr erfahren"
+  },
+  "Features": {
+    "title": "Funktionen",
+    "subtitle": "Alles was Sie für großartige Webanwendungen brauchen",
+    "cards": {
+      "responsive": {
+        "title": "Responsives Design",
+        "description": "Ihre Anwendung sieht auf jedem Gerät großartig aus, vom Smartphone bis zum Desktop"
+      },
+      "performance": {
+        "title": "Hohe Leistung",
+        "description": "Optimiert für Geschwindigkeit und Effizienz mit modernen Webtechnologien"
+      },
+      "accessibility": {
+        "title": "Barrierefreiheit",
+        "description": "Mit Fokus auf Barrierefreiheit entwickelt, damit jeder Ihre Anwendung nutzen kann"
+      }
+    }
+  },
+  "About": {
+    "title": "Über Mich",
+    "subtitle": "Leidenschaftlich in der Entwicklung außergewöhnlicher Web-Erlebnisse",
+    "background": {
+      "title": "Hintergrund",
+      "content": "Mit jahrelanger Erfahrung in der Webentwicklung spezialisiere ich mich auf den Aufbau moderner, skalierbarer Anwendungen mit React, Next.js und TypeScript"
+    },
+    "mission": {
+      "title": "Mission",
+      "content": "Unternehmen und Einzelpersonen dabei zu unterstützen, durch innovative Lösungen eine herausragende Webpräsenz zu schaffen"
+    },
+    "values": {
+      "title": "Werte",
+      "content": "Qualität, Innovation und Benutzererfahrung stehen im Mittelpunkt all meiner Entwicklungen"
+    }
+  },
+  "Testimonials": {
+    "title": "Was andere sagen",
+    "subtitle": "Erfahren Sie von zufriedenen Kunden über ihre Erfahrungen",
+    "testimonial1": {
+      "content": "Lars hat eine außergewöhnliche Website geliefert, die unsere Erwartungen übertroffen hat. Seine Liebe zum Detail und technische Expertise machten den Prozess reibungslos und angenehm.",
+      "name": "Sarah Johnson",
+      "role": "CEO, TechStart"
+    },
+    "testimonial2": {
+      "content": "Die Zusammenarbeit mit Lars war ein Vergnügen. Er hat unsere Bedürfnisse perfekt verstanden und eine moderne, schnelle Website geliefert, die unsere Kunden lieben.",
+      "name": "Michael Chen",
+      "role": "Marketing Director, InnovateCo"
+    },
+    "testimonial3": {
+      "content": "Die von Lars entwickelte Website hat unsere Online-Präsenz deutlich verbessert. Seine technischen Fähigkeiten und sein Designverständnis sind herausragend.",
+      "name": "Emma Davis",
+      "role": "Gründerin, CreativeStudio"
+    }
+  },
+  "Pricing": {
+    "title": "Einfache, transparente Preise",
+    "subtitle": "Wählen Sie den Plan, der am besten zu Ihren Bedürfnissen passt",
+    "hobby": {
+      "name": "Hobby",
+      "description": "Perfekt für persönliche Projekte",
+      "price": "49€",
+      "period": "/Monat",
+      "features": [
+        "Bis zu 5 Seiten",
+        "Basis SEO-Optimierung",
+        "Responsives Design",
+        "Kontaktformular"
+      ],
+      "cta": "Loslegen"
+    },
+    "pro": {
+      "name": "Professional",
+      "description": "Ideal für wachsende Unternehmen",
+      "price": "99€",
+      "period": "/Monat",
+      "features": [
+        "Bis zu 10 Seiten",
+        "Erweiterte SEO-Optimierung",
+        "Individuelle Animationen",
+        "Blog-Integration",
+        "Prioritäts-Support"
+      ],
+      "cta": "Pro werden"
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "Für große Organisationen",
+      "price": "Individuell",
+      "period": "",
+      "features": [
+        "Unbegrenzte Seiten",
+        "Individuelle Funktionen",
+        "Dedizierter Support",
+        "Performance-Optimierung",
+        "Sicherheits-Audit"
+      ],
+      "cta": "Kontaktieren Sie uns"
+    }
+  }
+}

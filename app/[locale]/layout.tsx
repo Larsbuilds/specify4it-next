@@ -2,12 +2,13 @@ import { Inter } from "next/font/google"
 import { getTranslations } from 'next-intl/server'
 import { notFound } from "next/navigation"
 import { Providers } from "../providers"
+import { Header } from "../components/layout/Header"
 
 const inter = Inter({ subsets: ["latin"] })
 
 async function getMessages(locale: string) {
   try {
-    return (await import(`../../content/${locale}.json`)).default
+    return (await import(`../messages/${locale}.json`)).default
   } catch (error) {
     notFound()
   }
@@ -32,10 +33,15 @@ export default async function LocaleLayout({
   const messages = await getMessages(locale)
 
   return (
-    <Providers locale={locale} messages={messages}>
-      <main className={inter.className}>
-        {children}
-      </main>
-    </Providers>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={inter.className}>
+        <Providers locale={locale} messages={messages}>
+          <Header />
+          <main>
+            {children}
+          </main>
+        </Providers>
+      </body>
+    </html>
   )
 }
