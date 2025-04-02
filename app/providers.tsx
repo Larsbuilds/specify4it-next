@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { NextIntlClientProvider } from "next-intl"
+import { ServiceWorkerProvider } from "@/components/providers/service-worker-provider"
 import { useEffect, useState } from "react"
 
 export function Providers({
@@ -35,6 +36,7 @@ export function Providers({
         enableSystem
         disableTransitionOnChange
       >
+        <ServiceWorkerProvider />
         {children}
       </ThemeProvider>
     </NextIntlClientProvider>

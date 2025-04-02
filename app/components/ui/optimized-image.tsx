@@ -11,7 +11,7 @@ interface OptimizedImageProps {
   height: number
   className?: string
   priority?: boolean
-  loading?: 'lazy' | 'eager'
+  sizes?: string
 }
 
 export function OptimizedImage({
@@ -21,7 +21,7 @@ export function OptimizedImage({
   height,
   className,
   priority = false,
-  loading = 'lazy',
+  sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 }: OptimizedImageProps) {
   const [isLoading, setIsLoading] = useState(true)
 
@@ -38,9 +38,12 @@ export function OptimizedImage({
         )}
         onLoadingComplete={() => setIsLoading(false)}
         priority={priority}
-        loading={loading}
+        sizes={sizes}
         quality={90}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        placeholder="blur"
+        blurDataURL={`data:image/svg+xml;base64,${Buffer.from(
+          '<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="300" fill="#CCCCCC"/></svg>'
+        ).toString("base64")}`}
       />
     </div>
   )
