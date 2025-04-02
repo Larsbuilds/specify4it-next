@@ -62,7 +62,7 @@ export function HeroSection() {
                   Welcome to Our Platform
                 </div>
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                  Transform Your Business with Our Solutions
+                  Larsbuilds Web Hub
                 </h1>
                 <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
                   We provide innovative solutions to help businesses grow and succeed in the digital age.
@@ -183,7 +183,7 @@ export function HeroSection() {
                 transition={{ delay: 0.3 }}
                 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
               >
-                Transform Your Business with Our Solutions
+                Larsbuilds Web Hub
               </motion.h1>
               <motion.p 
                 variants={slideIn}
