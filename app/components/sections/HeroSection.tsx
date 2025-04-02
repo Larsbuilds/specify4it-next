@@ -6,12 +6,12 @@ import { useEffect, useState } from "react"
 
 const fadeIn = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }
+  visible: { opacity: 1, transition: { duration: 0.1, ease: "easeOut" } }
 }
 
 const slideIn = {
-  hidden: { y: 50, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }
+  hidden: { y: 5, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.1, ease: "easeOut" } }
 }
 
 const scaleIn = {
@@ -64,7 +64,7 @@ export function HeroSection() {
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
                   This is your new Website
                 </h1>
-                <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
+                <p className="max-w-[600px] text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400">
                   Reach out for a demo!
                 </p>
               </div>
@@ -170,7 +170,7 @@ export function HeroSection() {
                 variants={slideIn}
                 initial="hidden"
                 animate="visible"
-                transition={{ delay: 0.2 }}
+                transition={{ delay: 0.02 }}
                 className="inline-flex items-center rounded-lg bg-primary/10 px-4 py-1 text-sm font-medium text-primary"
               >
                 Welcome to your Platform
@@ -179,8 +179,9 @@ export function HeroSection() {
                 variants={slideIn}
                 initial="hidden"
                 animate="visible"
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.02 }}
                 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+                style={{ willChange: 'transform' }}
               >
                 This is your new Website
               </motion.h1>
@@ -188,8 +189,13 @@ export function HeroSection() {
                 variants={slideIn}
                 initial="hidden"
                 animate="visible"
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.02 }}
                 className="max-w-[600px] text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400"
+                style={{ 
+                  willChange: 'transform',
+                  contentVisibility: 'auto',
+                  containIntrinsicSize: '0 500px'
+                }}
               >
                 Reach out for a demo!
               </motion.p>
@@ -198,7 +204,7 @@ export function HeroSection() {
               variants={slideIn}
               initial="hidden"
               animate="visible"
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.1 }}
               className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             >
               <motion.div variants={buttonHover} whileHover="hover" className="w-full sm:w-auto">
