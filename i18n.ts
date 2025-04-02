@@ -1,5 +1,1 @@
-import {getRequestConfig} from 'next-intl/server';
-
-export default getRequestConfig(async ({locale}) => ({
-  messages: (await import(`./messages/${locale}.json`)).default
-})); 
+import {getRequestConfig} from "next-intl/server";\n\nexport default getRequestConfig(async ({locale}) => ({\n  messages: (await import(`./messages/${locale}.json`)).default\n}));
